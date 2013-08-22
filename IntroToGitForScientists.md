@@ -491,6 +491,8 @@ Lastly, for an interactive tutorial that will teach you how to use branches, mer
 > **Pro tip:** For users of R, I highly recommend using [RStudio](http://www.rstudio.com/) as your IDE. It allows you to [easily enable source control with git](http://www.rstudio.com/ide/docs/version_control/overview) from within RStudio.
 >
 > The only caveat is that you can only commit, push/pull and checkout branches from within RStudio. To do the other (not that much more complicated) tasks with git, you'll need to open a command window -- for example to create a new branch or add a remote branch. Luckily, there's an easy-to-reach "Shell..." menu item under the "More" button in the "Git" tab.
+> 
+> [Here's a great tutorial to get you started with git and RStudio](http://nicercode.github.io/git/rstudio.html)
 
 ## Great references
 
