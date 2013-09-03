@@ -246,6 +246,12 @@ $ git add conflicted_file.r
 $ git commit
 ```
 
+If you're done with the feature branch, you can clean up after yourself and delete the branch with:
+
+```bash
+$ git branch -d awesome_new_feature
+```
+
 > **Pro tip:** Git doesn't want you to lose files, so it won't let you switch branches without making sure that you're working directory is clean and all the changes you've made have been committed. There are two (or more) ways around this. If you've made changes to a file but you want to switch branches you can roll back your changes by running:
 >
 > ```bash
