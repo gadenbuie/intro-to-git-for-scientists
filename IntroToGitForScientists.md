@@ -55,7 +55,7 @@ The student working on the DOE framework works from home, so whenever he needs t
 simulation_code2013-08-18_bugfix2_final_FINAL.zip
 ```
 
-Things get even worse when the analysis and writing start, especially when the advisor wants to see new results and new sections written. Emails fly back and forth, and even though *Track Changes* is turned on in the Word document, multiple revisions are being made by different people to the same version, so some kind of file name change is needed. Of course, one unlucky soul got elected gate-keeper for the paper, so everybody piles their revisions on to her and she organizes them, manages conflicts, compiles the changes and then sends out the new version.
+Things get even worse when the analysis and writing start, especially when the advisor wants to see new results and new sections written. Emails fly back and forth, and even though *Track Changes* is turned on in the Word document, multiple revisions are being made by different people to the same version, so some kind of file name change is needed. Inevitably, one unlucky soul gets elected gate-keeper for the paper, so everybody piles their revisions on to her and she organizes them, manages conflicts, compiles the changes and then sends out the new version.
 
 Two weeks in, the folder that she keeps all of the revisions in looks like this:
 
@@ -120,6 +120,20 @@ As a result, there are plenty of resources that tell you _how_ to do things with
 Then I'll point you in the direction of good resources that do a much better job of covering the details. You can take it from there.
 
 Let's go back to your research group and see how git can work for you.
+
+There are two ways to get started in git. If someone on your team has already created the repository and has hosted it online, you can create a clone of the git repository on your local machine by running `git clone <url>`. The clone command creates a folder and puts all of the data in the repository in that folder. For example, to clone the git repository for this project you would run:
+
+```bash
+$ git clone http://bitbucket.org/gadenbuie/intro-to-git-for-scientists
+```
+
+On the other hand, if you're creating a repository for the first time -- even if the code already exists -- you initialize a git repository by going to the project's directory and typing:
+
+```bash
+$ git init
+```
+
+This creates a `.git` directory in the project folder, but nothing in your folder is tracked yet. In the next section we'll see how to add files to the repository and track the changes made to them.
 
 [pro-git]: http://www.git-scm.com/book
 
@@ -302,6 +316,8 @@ $ git branch -r
 
 [^remote-track]: To initialize tracking of remote repositories you use:\
 `git remote add <remote_name> <url_to_remote.git>`
+
+The output from this command shows that you are tracking 4 remote repositories named *alyssa*, *dan*, *team* and *origin*. The last one, *origin*, is simply the name that git gives to the *origin*al remote repository. This is generally the remote you cloned from or first pushed to.
 
 Alyssa told you to check out her experimental branch because it might be useful to your awesome new feature. In order to checkout her branch, you have to create your own branch in your local repository based on the remote branch. You do this by using[^checkout-remote]:
 
