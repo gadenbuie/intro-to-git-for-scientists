@@ -343,6 +343,19 @@ If the local and remote branches have the same name, then you can shorten this c
 $ git push origin awesome_new_feature
 ```
 
+> **Pro tip:** It's fairly normal to have a "central" repository that you update regularly, for example a repository on [GitHub] or [BitBucket] where you host your project or store your code. Thus, the most common way taught to push changes to or pull changes from that repository is to use:
+>
+> ```bash
+> $ git pull
+> $ git push
+> ```
+>
+>  When you're only moving commits back and forth between your local **master** branch and **origin/master**, then this is acceptable shorthand, but only because you already know exactly what has changed and how (because you're the one who changed it).
+>
+> In all other cases, you should `git fetch` and then `git merge`. Actually, even if you *are* the only one making changes, it's still usefull to `git fetch` and then `git merge`. For more details, [here's an excellent discussion on why this is a good habit](http://longair.net/blog/2009/04/16/git-fetch-and-merge/).
+>
+> The short version is that `git fetch` pulls in all of the commits from the remote repository, but gives you plenty of time to think about what you're doing before you start merging changes into your own code.
+
 ## What changed?
 
 Git provides a number of really good tools for finding out and keeping track of what has changed in the code. 
