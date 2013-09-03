@@ -8,9 +8,7 @@
 
 # Why use git?
 
-[Git is][git]
-
-> _a free and open source distributed version control and source code management system designed to handle everything from small to very large projects with speed and efficiency._
+[Git is][git] a tool to manage and record changes to files, and it works just as well for a single person on their own personal computer as it does for hundreds of contributors collaborating together on a single project. Technically speaking, git is a (free and open source) _distributed version control and source code management software_.
 
 But why use git? Most introductory git tutorials start by assuming that the reader is familiar with version control systems, has tried a few of them, and is now considering whether or not git is the tool they'll want to use. Usually what they're really talking about is reasons for using a [Distributed Version Control System][dvcs] verse a [Centralized Version Control System][cvs]. And then they talk about [git][git] [vs.][gvhg] [Mercurial][hg], another DVCS.
 
