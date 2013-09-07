@@ -383,7 +383,7 @@ $ git push origin awesome_new_feature
 >
 > The short version is that `git fetch` pulls in all of the commits from the remote repository, but gives you plenty of time to think about what you're doing before you start merging changes into your own code.
 
-## What changed?
+## Track your changes
 
 Git provides a number of really good tools for finding out and keeping track of what has changed in the code. 
 
