@@ -93,11 +93,12 @@ In the Dropbox method, there is one shared folder for the team^[I said *Dropbox 
 - Everyone on the team always has up-to-date files.
 - Everyone on the team always has access to the files, online and offline.
 
-It also *doesn't solve the problem of version control*.
+It also *doesn't solve the problem of version control*:
 
-Two people can work on the same file in Dropbox, but this will generate conflicted files.
+* Two people can work on the same file in Dropbox, but this will generate conflicted files.
+* Dropbox caches 30 days of file history, so you can jump back to any version of the file in the last 30 days, but it doesn't keep track of *what you did to the files*, or *why you did what you did to the files*. 
 
-Dropbox caches 30 days of file history, so you can jump back to any version of the file in the last 30 days, but it doesn't keep track of *what you did to the files*, or *why you did what you did to the files*. Your group will still have to track those changes somewhere else, and most likely they'll do this by adding version numbers and descriptions to file names and sending emails about changes.
+Your group will still want to track who did what when and why, and most likely they'll do this by adding version numbers and descriptions to file names and sending emails about changes.
 
 ## The Google Docs Technique {#gdocs}
 
@@ -115,9 +116,13 @@ Some ground rules first. There are a million different resources for learning gi
 
 Git is a powerful and very flexible tool. Almost too flexible. Git works for nearly *any* workflow, for any size project, from keeping track of just one file on your own system to colossally huge projects like [the Linux kernel](https://en.wikipedia.org/wiki/Linux_kernel#Revision_control).
 
-As a result, there are plenty of resources that tell you _how_ to do things with git that assume you know both _what_ you want to do and _why_. My goal is that after reading this you'll have an idea of how git can fit into your workflow. You'll have a vague notion of git concepts and how they can do a better job of doing the things you're already doing. But it's really just a glimpse.
+As a result, there are plenty of resources that tell you _how_ to do things with git that assume you know both _what_ you want to do and _why_. My goal is that after reading this you'll have an idea of how git can fit into your workflow. I'll also introduce git in a way that you could actually start using it when you're done reading this, provided the workflow I describe is the workflow you want.
 
-Then I'll point you in the direction of good resources that do a much better job of covering the details. You can take it from there.
+But the caveat is that there is much more to git under the hood than I'm presenting, and it's worth knowing and understanding how git works in order to take advantage of it fully (also known as harnessing the magic). By the end of this document, you'll have a vague notion of git concepts and how they can do a better job of doing the things you're already doing. But it's really just a glimpse.
+
+Then I'll point you in the direction of [good resources](#go-deep) that do a much better job of covering the gritty details. If you decide that git is the right tool for you, then at least bookmark [the links at the end](#great-references) for easy referencing.
+
+## Get started
 
 Let's go back to your research group and see how git can work for you.
 
@@ -501,7 +506,7 @@ $ git checkout -- simulator.py
 
 This copies over your changed `simulator.py` file with the version of the file that was in the last commit. All your changes are gone. (So be careful with this one. And don't run with scissors.)
 
-# Go Deep
+# Go Deep {#go-deep}
 
 I'm hoping that by now you can see how git can work for you and your research group. If you've gotten this far and think you're ready to start using git to manage your source code, then there are a number of great resources on the web to help you get started.
 
@@ -527,7 +532,7 @@ Lastly, for an interactive tutorial that will teach you how to use branches, mer
 > 
 > [Here's a great tutorial to get you started with git and RStudio](http://nicercode.github.io/git/rstudio.html).
 
-## Great references
+## Great references {#great-references}
 
 The absolutely best git reference book is [Pro Git by Scott Chacon][pro-git], which available in its entirety online.
 
@@ -539,9 +544,11 @@ John McDonnell's [Git for Scientists](http://gureckislab.org/pages/GitTutorial/)
 
 Lastly, when in doubt, if none of the above have the answer your looking for, [StackOverflow](http://stackoverflow.com) is the place to go.
 
+---
+
 Oh yeah, and [go here to download and install git][git].
 
 -- \
 Garrick Aden-Buie \
-August, 2013 \
+September, 2013 \
 <http://garrickadenbuie.com> \
