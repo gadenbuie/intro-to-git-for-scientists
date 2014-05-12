@@ -10,24 +10,24 @@
 
 [Git is][git] a tool to manage and record changes to files, and it works just as well for a single person on their own personal computer as it does for hundreds of contributors collaborating together on a single project. Technically speaking, git is a (free and open source) _distributed version control and source code management software_.
 
-But why use git? Most introductory git tutorials start by assuming that the reader is familiar with version control systems, has tried a few of them, and is now considering whether or not git is the tool they'll want to use. Usually what they're really talking about is reasons for using a [Distributed Version Control System][dvcs] verse a [Centralized Version Control System][cvs]. And then they talk about [git][git] [vs.][gvhg] [Mercurial][hg], another DVCS.
+But why use git? Most introductory git tutorials start by assuming that the reader is familiar with version control systems, has tried a few of them, and is now considering whether or not git is the tool they'll want to use. Usually they're really talking about *reasons for using* a [Distributed Version Control System][dvcs] versus a [Centralized Version Control System][cvs]. And then they talk about [git][git] [vs.][gvhg] [Mercurial][hg], another DVCS.
 
 But for users who have never considered using *any* version control systems -- or those who have thought about using git but have put it off because it seems too difficult -- "Why use git?" is a much deeper question than "why *choose* git?"
 
-In fact, most introductory tutorials start by walking the reader through the most basic git commands, taking for granted that the beginner has already convinced him or herself that he even *wants* to be using those basic git commands. Never mind explaining why they would use those commands to achieve what they *do* want to do, or why they would even use git at all.
+In fact, most introductory tutorials start by walking the reader through the most basic git commands, taking for granted that the beginner has already convinced him or herself that they even *want* to be using those basic git commands. Never mind explaining why they would use those commands to achieve what they *do* want to do, or why they would even use git at all.
 
-This guide is intended for scientists, in particular PhD students and their collaborators, advisors and professors -- and other regular people who occasionally write code to get things done. As a group, we're overworked, underpaid and busy. But we also have a much higher tolerance for learning something new to add new skills to our growing skill sets. 
+With that in mind, this guide is intended for scientists, in particular PhD students and their collaborators, advisors and professors -- and other regular people who occasionally write code to get things done. As a group, we're overworked, underpaid and busy. But we also have a much higher tolerance for learning something new to add new skills to our growing skill sets.
 
 Doing science is rigorous and precise. Writing, editing and publishing papers is a trial-by-fire adventure in organization. Git is a powerful tool that can make your life easier:
 
-* It makes keeping a permanent record of the history of your project possible, including each and every single change you make to your code or text. 
-* It makes asynchronous collaboration with others completely doable, while freeing collaborators to experiment, dabble, edit and make changes on their own time, without having to worry about breaking things or having to be connected to the internet. 
+* It makes keeping a permanent record of the history of your project possible, including each and every single change you make to your code or text.
+* It makes asynchronous collaboration with others completely doable, while freeing collaborators to experiment, dabble, edit and make changes on their own time, without having to worry about breaking things or having to be connected to the internet.
 * It makes your work easier and more efficient because the git workflow works best when you break your work into logical, one-item tasks.
 * It makes "rolling back" changes or loading *any version* of your project state a simple, one-line command.
 
-On the other hand, in the spirit of full disclosure, git at times seems very mysterious. It's entirely a command line tool and it requires you to have at least a fundamental understanding of what's going on behind the curtains. There are a few graphical tools available, but they still require you to understand the system.
+On the other hand, in the spirit of full disclosure, git at times seems very mysterious. It's entirely a command line tool and it requires you to have at least a fundamental understanding of what's going on behind the curtains. There are a few graphical tools available, but they still work best when you understand the system.
 
-So that's what we're going to do now. In the next section I want to show you how git works by taking a look at how most "regular" people (who have never spent an inordinate amount of time thinking about version control) approach version control. In it, we'll see that basic git isn't very different from what most people are doing now, it's just a lot more powerful and deliberate. We'll also hopefully see just how much an actual version control system can help you out.
+That's what we're going to do now. In the next section I want to show you how git works by taking a look at how most "regular" people (who have never spent an inordinate amount of time thinking about version control) approach version control. In it, we'll see that basic git isn't very different from what most people are doing now, it's just a lot more powerful and deliberate. We'll also hopefully see just how much an actual version control system can help you out.
 
 [git]: http://git-scm.com
 [dvcs]: https://en.wikipedia.org/wiki/Distributed_version_control_system
@@ -37,54 +37,35 @@ So that's what we're going to do now. In the next section I want to show you how
 
 # Version control without the control
 
-Let's imagine your research group lands grant funding to start a new research project. The research project involves writing code to run several simulated scenarios, after which the data generated and collected from numerous simulations will be analyzed and presented. In the end, of course, the results will have to be written up, figures and tables generated and -- after a long phase of revisions and edits -- submitted to a journal for publication. 
+Let's imagine your research group lands grant funding to start a new research project. The research project involves writing code to run several simulated scenarios, after which the data generated and collected from numerous simulations will be analyzed and presented. In the end, of course, the results will have to be written up, figures and tables generated and -- after a long phase of revisions and edits -- submitted to a journal for publication.
 
-Of course, three months later your group receives the reviewer's responses. One nice reviewer pointed out that your group overlooked an important metric in the simulations and your group needs to go back and run all of the simulations again -- with all of the parameters and versions from the original set of simulations. 
+Of course, three months later your group receives the reviewer's responses. One nice reviewer pointed out that your group overlooked an important metric in the simulations and your group needs to go back and run all of the simulations again -- with all of the parameters and versions from the original set of simulations.
 
-In those three months, however, your group, not about to get complacent with the research, kept working on the simulation code and is nearly ready to run these new revised simulations. After a day of looking through folders full of code files, your team finds most of the old code, but one file is missing. You'll have to stay up all night trying to remember what you did nearly half a year ago.
+In those three months, however, your group kept working on the code, moving the research forward. The codebase mainly resides in a shared folder with copies made for each trial run, coded in the folder names. It was easy to find the code used around the time of the reviewed paper, but given the many folders and code versions there is little guarantee you'll be able to implement the reviewer's revisions under the exact same conditions as in the original paper.
 
-Let's go back to the beginning. At the start of the research your team had a group meeting and decided to divide up the tasks. One or two people went to work on coding the simulations, one person went to work on setting up the framework for the design of experiments. Then later everybody switched to working on analysis and finally everybody jumped in on writing up the sections they were worked on.
+The issue here is the framework for organization. While most researchers and scientists are highly intelligent people capable of great feats of organization and attention to detail, they rely on "office-style" organization skills instead of code-focused tools. In part, this is likely a result of the proliferation and ease of Microsoft Office and other wordprocessing programs. Researchers tend to view programming as a means to an end that must be reached as quickly as possible. But with very little additional investment, researchers who take a more "code-centric" view of their work can get great benefits from using the tools available to modern programmers.
 
-## What about the files?
+## The usual story with the files
 
-Most people in these situations -- people who haven't thought much about version control in general -- break off into their groups and get straight to work. The simulation coding crew gets down to business, and they share their code by doing all their work in a shared folder on the server. Luckily, they sit next to each other in the grad lab, so whenever they need to edit a file that the other person is working on, they just lean over and ask how long it's going to take to finish up.
+Most people who haven't thought much about version control break off into their groups and get straight to work dumping their work into a shared folder with varying degrees of organization. Shared files are copied or worked on one-at-a-time to avoid conflicts. Emails go back and forth with attached zipped files with names like
 
-The student working on the DOE framework works from home, so whenever he needs to test out the new simulation code, he emails the simulation crew and they send him back a zip of updated files. Usually this is where they discover that things have broken, so the emails go back and forth for a while, and by the end the file name of that zip file looks like this:
-
-```bash
+```
 simulation_code2013-08-18_bugfix2_final_FINAL.zip
 ```
 
-Things get even worse when the analysis and writing start, especially when the advisor wants to see new results and new sections written. Emails fly back and forth, and even though *Track Changes* is turned on in the Word document, multiple revisions are being made by different people to the same version, so some kind of file name change is needed. Inevitably, one unlucky soul gets elected gate-keeper for the paper, so everybody piles their revisions on to her and she organizes them, manages conflicts, compiles the changes and then sends out the new version.
+Things get even worse when the analysis and writing start, especially when the advisor wants to see new results and new sections written. Even though *Track Changes* is turned on in the Word document, multiple revisions are being made by different people to the same version, so some kind of file name change is needed. Inevitably, one unlucky soul gets elected gate-keeper for the paper, so everybody piles their revisions on to her and she organizes them, manages conflicts, compiles the changes and then sends out the new version.
 
-Two weeks in, the folder that she keeps all of the revisions in looks like this:
+Two weeks in, the folder that she keeps all of the revisions in looks like the folder in Figure 1.
 
-```bash
-$ ls ~/Documents/ResearchProject/
-  SimResearch_v1_Dan_comments.docx
-  SimResearch_v1_Ali.docx
-  SimResearch_v1.2_Dan-edits.docx
-  SimResearch_v1.3_ProfZ-majoredits.docx
-  SimResearch_v1.4.docx
-  SimResearch_v1.4_Ali_revisions.docx
-  SimResearch_v1.8_rewritten_section_2.docx
-  SimResearch_v1.8_rewritten_section_2_ProfZ_edits.docx
-  SimResearch_v2_start_over_from_scratch.docx
-  SimResearch_v2_start_over_from_scratch_Ali_comments.docx
-  SimResearch_v2_start_over_from_scratch_Ali_comments_Dan_changes.docx
-```
+![Research project revision hell.](ResearchProjectFolder.png)
 
-Everybody is trying their best to communicate with each other, but everybody has a slightly different idea about how to communicate.
-
-Dan always increments the version number by .1 and tries to summarize the changes he's made to the document. But Professor Z always ends up asking for entire sections to be rewritten. Within a few days or weeks version numbers aren't descriptive enough, so Alyssa started adding descriptions to the file name, but then Ali and Dan just added their names behind those changes.
-
-Plus, every change that is being made is sent by email, with everyone in the group CC'd. By the time Alyssa's folder looks like this, everybody on the team has an even more clogged inbox, full of messages about changes made and revisions proposed.
+Everybody is trying their best to communicate with each other, but everybody has a slightly different idea about how to communicate. A variety of version-numbering and file-naming schemes arise, not to mention the flood of reply-all emails generated by trying to share changes.
 
 # There has to be a better way
 
 There is a better way. There are many better ways, in fact.
 
-There are hundreds of online collaboration tools available that would make the lives of everyone on the research team better. The two most common ways are the [Dropbox Method](#dropbox) or the [Google Docs Technique](#gdocs).
+There are hundreds of online collaboration tools available that would make the lives of everyone on the research team better. The two most common ways I'll call the "[Dropbox Method](#dropbox)" and the "[Google Docs Technique](#gdocs)".
 
 ## The Dropbox Method {#dropbox}
 
@@ -96,13 +77,13 @@ In the Dropbox method, there is one shared folder for the team^[I said *Dropbox 
 It also *doesn't solve the problem of version control*:
 
 * Two people can work on the same file in Dropbox, but this will generate conflicted files.
-* Dropbox caches 30 days of file history, so you can jump back to any version of the file in the last 30 days, but it doesn't keep track of *what you did to the files*, or *why you did what you did to the files*. 
+* Dropbox caches 30 days of file history, so you can jump back to any version of the file in the last 30 days, but it doesn't keep track of *what you did to the files*, or *why you did what you did to the files*.
 
 Your group will still want to track who did what when and why, and most likely they'll do this by adding version numbers and descriptions to file names and sending emails about changes.
 
 ## The Google Docs Technique {#gdocs}
 
-The Google Docs technique is *real-time* collaboration. Files are hosted online, in the cloud, and anybody can open the file and start editing. Changes are synced in real-time for anybody else using the file, thus resolving the one-person-at-a-time problem. 
+The Google Docs technique is *real-time* collaboration. Files are hosted online, in the cloud, and anybody can open the file and start editing. Changes are synced in real-time for anybody else using the file, thus resolving the one-person-at-a-time problem.
 
 It doesn't completely resolve the tracking changes problem. You can see who changed what and when, but, after several rounds of editing, the document will be a mess of changes. Edits made to the beginning and end of the document may be part of the same "logical task", but good luck trying to figure out who did what and why.
 
@@ -152,7 +133,7 @@ The best way to use git is to, instead, break down your task list into single it
 - Create a results object class.
 - Write a function to save results as a .csv file.
 
-Each of these tasks is a logical entity in the history of your project. They also don't overlap much. As you work through your task list, every time you finish writing the code for a list item above -- once you've *tested the code* to make sure it does what you want it to do -- you stop and tell git to save the state of your files.
+Each of these tasks is a single conceptual entity in the history of your project. They also don't overlap much. Work through your task list item by item. Every time you finish writing the code for a list item --- and after sufficiently testing the code --- you take a second and tell git to save the state of your files.
 
 Let's say you were working on the file `simulator.py`. When you finish writing the random number generator, you tell git to save your work:
 
@@ -177,7 +158,7 @@ Rewrote random number generator function
 	  Press et al., 2007.
 ```
 
-When you save the file and close the editor, the commit is finished and your message is stored. Later, at the weekly team meeting when you're trying to remember what you did last week, you can run `git log` and see a descriptive, logical, sequential list of everything you've done[^1]. It's almost magic.
+When you save the file and close the editor, the commit is finished and your message is stored. Later, at the weekly team meeting when you're trying to remember what you did last week, you can run `git log` and see a descriptive, sequential list of everything you've done[^1]. It's almost magic.
 
 > **Pro tip:** Commit early and commit often.
 
@@ -185,12 +166,12 @@ When you save the file and close the editor, the commit is finished and your mes
 
 ## Separate your work into features.
 
-Whenever you start to work on something _new_ -- like a new idea, a new feature, a brilliant new idea that came to you in the shower, or that off-the-wall idea the team cooked up in the last meeting -- you'll want to keep the feature separate from the main code until it's ready for prime time. Then, when you're ready you'll fold in the new feature.
+Whenever you start to work on something _new_ -- like a new feature or a bug fix -- you'll want to keep the development code separate from the main code until it's ready for prime time. Then, when you're ready you'll fold in the new feature.
 
 With git, you get this done by starting a new **branch**. In git, a branch has two defining characteristics:
 
-1. A branch has a **parent**. In other words, a branch starts from somewhere, that somewhere being a certain state of the codebase.
-2. A branch contains a record of the changes made on top of that starting point.
+1. A branch has a **parent**. A branch originates from a certain state of the codebase,
+2. And a branch contains a record of the changes made on top of that starting point.
 
 In git, branching is *cheap*, meaning that it's easy to create a branch. They don't take up any extra space and there is no good reason for *not* using them.
 
@@ -201,9 +182,9 @@ $ git branch awesome_new_feature
 $ git checkout awesome_new_feature
 ```
 
-The first command, `git branch`, marks the starting point for the new branch. Basically, it says to create a new branch, named `awesome_new_feature`, that starts with the current state of the code.
+The first command, `git branch`, marks the starting point for the new branch. It creates a new branch, named `awesome_new_feature`, that starts with the current state of the code.
 
-The second command makes it easy to switch between branches, or even individual commits. The checkout command, `git checkout`, tells git to change all the files in the project directory that are tracked by git^[As in, all the files you've already committed.] to the state they were in at whatever label you use. If you've just started a new branch, nothing changes because you haven't made any commits to *awesome_new_feature*, but `git checkout awesome_new_feature` tells git that any new commits you make are commits to your awesome feature branch.
+The second command is used to switch between branches, or even individual commits. The checkout command, `git checkout`, tells git to change all the files in the project directory that are tracked by git^[As in, all the files you've already committed.] to the state they were in at whatever label you use. If you've just started a new branch, nothing changes because you haven't made any commits to `awesome_new_feature`, but `git checkout awesome_new_feature` tells git that any new commits you make are commits to your awesome feature branch.
 
 But let's say you work on *awesome_new_feature* for a while, adding one commit for each of the items on your `simulator.py` task list. Somebody emails you and asks you about code that was part of the old random number generator function, so you want to get back to the code as it was before you started making your awesome changes.
 
@@ -213,11 +194,11 @@ To do this you can use:
 $ git checkout master
 ```
 
-In git, there is generally one branch called master. This where most developers decided to keep the good code; the features that have made it past testing phases are all here. It's recommended (see [the next section](#merge)) to try to keep the master branch full of clean code only.
+In git, there is generally one branch called master. This where most developers choose to keep the public code; the features that have made it past testing phases are all here. It's recommended (see [the next section](#merge)) to try to keep the master branch full of clean code only.
 
-The checkout command changes all the files to match the state they were in at whatever pointer you give it, so when you use `git checkout master` all of the tracked files in your directory magically change back to the state they're in at the `master` branch. To get back to your work in the feature branch, you just check it out again: `git checkout awesome_new_feature`.
+The checkout command changes all the files to match the state they were in at whatever pointer you give it, so when you use `git checkout master` all of the tracked files in your directory are changed to match the state they're in at the `master` branch. To get back to your work in the feature branch, you just check it out again: `git checkout awesome_new_feature`.
 
-> **Pro tip:** If you ever get lost, simply run 
+> **Pro tip:** If you ever get lost, simply run
 
 > ```bash
 > $ git status
@@ -240,9 +221,9 @@ $ git merge awesome_new_feature
 
 This switches your code back to the state of the master branch and then merges the new feature branch into that code. As long as there haven't been any changes to the master branch, all of the commits from the *awesome_new_feature* branch will be **merge**d into the master branch.
 
-What if things *have changed* in the master branch? Maybe while you were working on your awesome new feature, you found a bug in the code. But it wasn't related to your feature, so you checked out the master, made the change in that branch and then committed to the master. But you didn't realize that you later change that same line in your feature branch. Now you have a conflict.
+What if things *have changed* in the master branch? Maybe while you were working on your awesome new feature, you found a bug in the code. But it wasn't related to your feature, so you checked out the master, made the change in that branch and then committed to the master. But you didn't realize that you later changed that same line in your feature branch. Now you have a conflict.
 
-This is the don't break things phase of the merge. Git tells you that there is a conflict between the two branches (and it's really good at merging, so if it says there's a conflict then there is certainly a conflict). Then it pauses the merge and tells you to fix the conflict. 
+This is the don't break things phase of the merge. Git tells you that there is a conflict between the two branches (and it's really good at merging, so if it says there's a conflict then there is certainly a conflict). Then it pauses the merge and tells you to fix the conflict.
 
 Your job is to then open the conflicted file, find the part that git has marked as a conflict, enter the right code and save the file. To tell git that you've resolved the conflict and you're sure that the new code works, you ` git add ` the previously conflicted (but now resolved) file back to the staging area and then ` git commit ` the changes to finish up the merge.
 
@@ -282,11 +263,11 @@ $ git branch -d awesome_new_feature
 
 ## Work locally, share when you're ready.
 
-All of the work I've discussed happens locally. Git makes you make the choice about what files to share, what files to change and what changes to accept into your files. This is where the distributed part of the **D**VCS comes into play. 
+All of the work I've discussed happens locally. Git makes you make the choice about what files to share, what files to change and what changes to accept into your files. This is where the distributed part of the **D**VCS comes into play.
 
 All of your code is kept in your local project directory, or **repository**, and it's updated only when you want it to be. Your colleagues may have an exact clone of your repository, or they may have made their own changes, or they may even have outdated code.
 
-But git doesn't care. That's right, *no repository is special.* 
+But git doesn't care. That's right, *no repository is special.*
 
 While it's customary for developers to have one distinguished repository with the latest production code and nearly-ready feature branches, no repository gets special treatment unless you decide it does.
 
@@ -330,20 +311,17 @@ $ git branch -r
 
 The output from this command shows that you are tracking 4 remote repositories named *alyssa*, *dan*, *team* and *origin*. The last one, *origin*, is simply the name that git gives to the *origin*al remote repository. This is generally the remote you cloned from or first pushed to.
 
-Alyssa told you to check out her experimental branch because it might be useful to your awesome new feature. In order to checkout her branch, you have to create your own branch in your local repository based on the remote branch. You do this by using[^checkout-remote]:
+Alyssa told you to check out her experimental branch because it might be useful to your awesome new feature. In order to checkout her branch, you have to create your own branch in your local repository based on the remote branch. There are several ways to do this[^checkout-remote], but the method below is the most "controlled" and follows the same format as the branch merging we've already discussed.
 
 ```bash
-$ git checkout -b alyssa-experiment alyssa/experimental
-  From git://bitbucket.org/alyssa/simulator.git
-    02e5f...91820d  alyssa-experiment       -> alyssa/experimental
-$ git checkout alyssa-experiment
-$ git merge github/alyssa-experiment
+$ git fetch alyssa
+$ git checkout -b alyssa-experiment
+$ git merge alyssa/experimental
 ```
 
-[^checkout-remote]: The general format is:\
-`git checkout -b <new_local_branch> <remote_name>/<remote_branch>`
+[^checkout-remote]: See <https://help.github.com/articles/fetching-a-remote> or <http://git-scm.com/book/en/Git-Basics-Working-with-Remotes> for more information on working with remote branches.
 
-This creates a new branch in your local repository, that knows how to communicate with Alyssa's `experimental` branch. Then you checkout your local branch and merge Alyssa's branch into your new branch called `alyssa-experiment`.
+Here, after fetching updates from the remote repository called `alyssa`, we create and checkout a new branch in your local repository. From there, you simply merge Alyssa's branch into your new branch by using the remote branch name when merging.
 
 You take a look at her changes and decide they look good and you want to merge them into your awesome new feature. So you go back to your feature branch and then merge your local copy of Alyssa's experimental branch into the feature branch.
 
@@ -379,13 +357,13 @@ $ git push origin awesome_new_feature
 >
 >  When you're only moving commits back and forth between your local **master** branch and **origin/master**, then this is acceptable shorthand, but only because you already know exactly what has changed and how (because you're the one who changed it).
 >
-> In all other cases, you should `git fetch` and then `git merge`. Actually, even if you *are* the only one making changes, it's still usefull to `git fetch` and then `git merge`. For more details, [here's an excellent discussion on why this is a good habit](http://longair.net/blog/2009/04/16/git-fetch-and-merge/).
+> In all other cases, you should `git fetch` and then `git merge`. Actually, even if you *are* the only one making changes, it's still useful to `git fetch` and then `git merge`. For more details, [here's an excellent discussion on why this is a good habit](http://longair.net/blog/2009/04/16/git-fetch-and-merge/).
 >
 > The short version is that `git fetch` pulls in all of the commits from the remote repository, but gives you plenty of time to think about what you're doing before you start merging changes into your own code.
 
 ## Track your changes
 
-Git provides a number of really good tools for finding out and keeping track of what has changed in the code. 
+Git provides a number of really good tools for finding out and keeping track of what has changed in the code.
 
 ### Version numbers
 
@@ -529,7 +507,7 @@ Lastly, for an interactive tutorial that will teach you how to use branches, mer
 > **Pro tip:** For users of R, I highly recommend using [RStudio](http://www.rstudio.com/) as your IDE. It allows you to [easily enable source control with git](http://www.rstudio.com/ide/docs/version_control/overview) from within RStudio.
 >
 > The only caveat is that you can only commit, push/pull and checkout branches from within RStudio. To do the other (not that much more complicated) tasks with git, you'll need to open a command window -- for example to create a new branch or add a remote branch. Luckily, there's an easy-to-reach "Shell..." menu item under the "More" button in the "Git" tab.
-> 
+>
 > [Here's a great tutorial to get you started with git and RStudio](http://nicercode.github.io/git/rstudio.html).
 
 ## Great references {#great-references}
