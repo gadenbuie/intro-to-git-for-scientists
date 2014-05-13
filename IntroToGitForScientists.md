@@ -87,7 +87,7 @@ Your group will still want to track who did what when and why, and most likely t
 
 The Google Docs technique is *real-time* collaboration. Files are hosted online, in the cloud, and anybody can open the file and start editing. Changes are synced in real-time for anybody else using the file, thus resolving the one-person-at-a-time problem.
 
-It doesn't completely resolve the tracking changes problem. You can see who changed what and when, but, after several rounds of editing, the document will be a mess of changes. Edits made to the beginning and end of the document may be part of the same "logical task", but good luck trying to figure out who did what and why.
+This method doesn't completely resolve the tracking changes problem. You can see who changed what and when, but, after several rounds of editing, the document will be a mess of changes. Edits made to the beginning and end of the document may be part of the same task, but good luck trying to figure out who did what and why.
 
 The other issue is that this style of collaboration only works well on documents that you would *want* to edit at the same time with someone else. Typically, that's limited to text documents, where writing content together is important. So this method generally doesn't help you keep track of coding changes.
 
@@ -95,15 +95,15 @@ The other issue is that this style of collaboration only works well on documents
 
 The Git Way is actually very similar to the natural flow of the research group...*only more deliberate*. I'll elaborate on how git can be inserted into the research team's flow and introduce some git terminology as we go.
 
-Some ground rules first. There are a million different resources for learning git. There are plenty of great resources to learn the detailed ins and outs of git -- to wit, the [Pro Git book][pro-git].
+First, a quick caveat. There are a million different resources for learning git. There are plenty of great resources to learn the detailed ins and outs of git -- to wit, the [Pro Git book][pro-git]. Use this document to get some idea of how git would fit into your research flow and then use other, more technical documents to learn git more deeply.
 
 Git is a powerful and very flexible tool. Almost too flexible. Git works for nearly *any* workflow, for any size project, from keeping track of just one file on your own system to colossally huge projects like [the Linux kernel](https://en.wikipedia.org/wiki/Linux_kernel#Revision_control).
 
 As a result, there are plenty of resources that tell you _how_ to do things with git that assume you know both _what_ you want to do and _why_. My goal is that after reading this you'll have an idea of how git can fit into your workflow. I'll also introduce git in a way that you could actually start using it when you're done reading this, provided the workflow I describe is the workflow you want.
 
-But the caveat is that there is much more to git under the hood than I'm presenting, and it's worth knowing and understanding how git works in order to take advantage of it fully (also known as harnessing the magic). By the end of this document, you'll have a vague notion of git concepts and how they can do a better job of doing the things you're already doing. But it's really just a glimpse.
+But the caveat is that there is much more to git under the hood than I'm presenting, and it's worth knowing and understanding how git works in order to take advantage of it fully (also known as harnessing the magic). The problem with git is that, while copy-pasting commands from Google will work in select cases, in the long run git is much easier to use when you know what it's doing.
 
-Then I'll point you in the direction of [good resources](#go-deep) that do a much better job of covering the gritty details. If you decide that git is the right tool for you, then at least bookmark [the links at the end](#great-references) for easy referencing.
+So, at the end of this document I'll point you in the direction of [good resources](#go-deep) that do a much better job of covering the gritty details. If you decide that git is the right tool for you, then at least bookmark [the links at the end](#great-references) for easy referencing.
 
 ## Get started
 
@@ -506,7 +506,7 @@ To try the basic git commands online, I suggest [code school](http://codeschool.
 
 Then, I recommend reading [Mark Longair](http://longair.net)'s [short introduction to git](http://longair.net/blog/2011/04/18/a-short-introduction-to-git/). It's available as a PDF from his website. Just skip straight to Section 3, _Basic Principles_. He includes more details than I did here, and he does a great job of explaining all the basics of using git that you'll need to know.
 
-Lastly, for an interactive tutorial that will teach you how to use branches, merge and rebase effectively, with an interactive shell and a matching animation of your source tree, check out [Learn Git Branching](http://pcottle.github.io/learnGitBranching/?demo).
+Lastly, for an interactive tutorial that will teach you how to use branches, merge and rebase effectively, with an interactive shell and a matching animation of your source tree, check out [Learn Git Branching](http://pcottle.github.io/learnGitBranching/?demo). I can't recommend this enough. You don't *have* to follow the tutorials, so I actually use this all the time to practice tricky merges before messing with my own repositories. Especially when the merge involves a command I haven't used in a while.
 
 > **Pro tip:** For users of R, I highly recommend using [RStudio](http://www.rstudio.com/) as your IDE. It allows you to [easily enable source control with git](http://www.rstudio.com/ide/docs/version_control/overview) from within RStudio.
 >
@@ -529,8 +529,3 @@ Lastly, when in doubt, if none of the above have the answer your looking for, [S
 ---
 
 Oh yeah, and [go here to download and install git][git].
-
--- \
-Garrick Aden-Buie \
-September, 2013 \
-<http://garrickadenbuie.com> \
